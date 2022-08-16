@@ -1,0 +1,14 @@
+.aside {
+  width: 100vw;
+  height: 30vh;
+  background-color: white;
+}
+@media only screen and (min-width: 1100px) {
+  .aside {
+    width: 30vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
+}

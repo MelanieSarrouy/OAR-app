@@ -1,0 +1,25 @@
+.filters__list {
+  display: flex;
+  justify-content: space-between;
+}
+.filters__list__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #0898e7;
+  width: 100%;
+  padding: 1rem 0;
+  border-radius: 5px 5px 0 0;
+  border-bottom: 0px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.open {
+  background-color: white;
+  color: #0898e7;
+}
+.close {
+  background-color: #0898e7;
+  color: white;
+}

@@ -1,16 +1,13 @@
 import React from 'react'
+import './header.css'
 
 const Header = () => {
   return (
-    <header>
-      <h1 className="filters__title">
-        <pre>
-          <span className="filters__title--span">O</span>pen
-        </pre>
-        <pre>
-          <span className="filters__title--span">A</span>pparel
-        </pre>
-        <span className="filters__title--span">R</span>egistry
+    <header className="header">
+      <h1 className="header__title">
+        <span className="header__title--span">O</span>pen{' '}
+        <span className="header__title--span">A</span>pparel{' '}
+        <span className="header__title--span">R</span>egistry
       </h1>
     </header>
   )

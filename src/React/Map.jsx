@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import GoogleMapReact from 'google-map-react'
+import './map.css'
 
 const Map = () => {
   const [location, setLocation] = useState({
