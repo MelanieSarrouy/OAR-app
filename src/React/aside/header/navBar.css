@@ -23,3 +23,7 @@
   background-color: #0898e7;
   color: white;
 }
+.nav {
+  text-decoration: none;
+  color: inherit;
+}

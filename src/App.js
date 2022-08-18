@@ -1,6 +1,6 @@
 import './App.css'
-import Aside from './React/Aside'
-import Map from './React/Map'
+import Aside from './React/aside/Aside'
+import Map from './React/map/Map'
 
 function App() {
   return (

@@ -1,5 +1,6 @@
 import React from 'react'
 import './header.css'
+import NavBar from './NavBar'
 
 const Header = () => {
   return (
@@ -9,6 +10,7 @@ const Header = () => {
         <span className="header__title--span">A</span>pparel{' '}
         <span className="header__title--span">R</span>egistry
       </h1>
+      <NavBar />
     </header>
   )
 }
