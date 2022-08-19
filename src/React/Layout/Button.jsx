@@ -1,11 +1,15 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './button.css'
 
 const Button = (props) => {
   return (
-    <button className="button inputButton" type="button">
-      {props.content}
-    </button>
+    <Link to={props.path} onClick={props.onClick}>
+      <div className="button inputButton" type="button">
+        {props.content}
+      </div>
+    </Link>
   )
-};
+}
 
-export default Button;
+export default Button

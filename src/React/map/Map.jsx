@@ -25,7 +25,7 @@ const Map = () => {
           className="react-map"
           // bootstrapURLKeys={{ key: 'AIzaSyB_Y9_gkv8T-JmDuZcvZmCGlRKlfRCeL0Q', language: 'fr' }}
           defaultCenter={{ lat: 48.866667, lng: 2.333333 }}
-          defaultZoom={5}
+          defaultZoom={0}
           center={location.center}
           onChange={({ center, zoom }) => {
             setLocation({ center: center, zoom: zoom })

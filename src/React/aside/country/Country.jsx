@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import Button from '../../Layout/Button'
+import Button from '../../layout/Button'
 
 const Country = () => {
   const [country, setCountry] = useState('')
+  const handleClick = () => {
+    console.log('test')
+  }
 
   return (
     <div className="inputContainer">
@@ -18,7 +21,7 @@ const Country = () => {
           placeholder="Select..."
           onChange={(e) => setCountry(e.target.value)}
         />
-        <Button content='Go' />
+        <Button path="/facilites" content="Go" onClick={handleClick} />
       </div>
     </div>
   )

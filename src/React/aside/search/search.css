@@ -44,18 +44,6 @@ hr:after {
 .inputContainer__input__field::placeholder {
     color: #0898e7;
   }
-.button {
-  background-color: #ea3a60;
-  border: 1px solid #ea3a60;
-  border-radius: .3rem;
-  color: white;
-  font-size: 1.1rem;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
 .searchButton {
   width: 100%;
   margin-top: 4rem;

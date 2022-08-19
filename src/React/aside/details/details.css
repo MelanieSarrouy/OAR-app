@@ -1,0 +1,33 @@
+.details-container {
+  padding: 2rem;
+}
+.details-container__label {
+  padding-bottom: 1rem;
+}
+.details-container__content {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: 1.5rem;
+}
+.details-container hr {
+  border: none;
+  border-top: 1px solid #0898e7;
+  color: #222;
+  overflow: visible;
+  text-align: center;
+  margin: 0rem 0 0rem 0;
+}
+.details-container hr:after {
+  background: rgba(255,255,255,0);
+  content: '';
+  color: #0898e7;
+  padding: 0 1rem;
+  position: relative;
+  top: -13px;
+}
+.details-container__gps {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
+}

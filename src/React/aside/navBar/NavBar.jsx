@@ -1,24 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './navBar.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const NavBar = () => {
-  const [toggle, setToggle] = useState(true)
+  const location = useLocation()
+  const pathName = location.pathname
   return (
     <nav>
       <ul className="filters__list">
-        <li
-          className={toggle ? 'filters__list__item open' : 'filters__list__item close'}
-          onClick={() => setToggle(!toggle)}
-        >
+        <li className={pathName === '/' ? 'filters__list__item open' : 'filters__list__item close'}>
           <Link to="/" className="nav">
             <h2 className="filters__list__item__title">Recherche</h2>
           </Link>
         </li>
-        <li
-          className={!toggle ? 'filters__list__item open' : 'filters__list__item close'}
-          onClick={() => setToggle(!toggle)}
-        >
+        <li className={pathName !== '/' ? 'filters__list__item open' : 'filters__list__item close'}>
           <Link to="/facilities" className="nav">
             <h2 className="filters__list__item__title">Installations</h2>
           </Link>
