@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import GoogleMapReact from 'google-map-react'
-import './map.css'
+import '../styles/map.css'
 import Marker from './Marker'
 
 const points = [

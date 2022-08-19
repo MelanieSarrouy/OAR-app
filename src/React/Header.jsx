@@ -1,6 +1,6 @@
 import React from 'react'
-import './header.css'
-import NavBar from '../navBar/NavBar'
+import '../styles/header.css'
+import NavBar from './NavBar'
 
 const Header = () => {
   return (

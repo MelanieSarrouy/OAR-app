@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import Brand from '../brand/Brand'
-import Country from '../country/Country'
-import Oar from '../oar/Oar'
-import './search.css'
+import Brand from './Brand'
+import Country from './Country'
+import Oar from './Oar'
+import '../styles/search.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { editFacilitiesList } from '../../../Redux/actions/actionGetFacilities'
+import { editFacilitiesList } from '../Redux/actions/actionGetFacilities'
 
 const Search = () => {
   const dispatch = useDispatch()

@@ -1,14 +1,14 @@
-import './App.css'
-import Map from './map/Map'
+import '../styles/app.css'
+import Map from './Map'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useStore } from 'react-redux'
 import { useEffect } from 'react'
 import { getBrands } from '../services/getBrands'
 import { getFacilities } from '../services/getFacilities'
-import Header from './aside/header/Header'
-import Search from './aside/search/Search'
-import Facilities from './aside/facilities/Facilities'
-import Details from './aside/details/Details'
+import Header from './Header'
+import Search from './Search'
+import Facilities from './Facilities'
+import Details from './Details'
 
 function App() {
   const store = useStore()

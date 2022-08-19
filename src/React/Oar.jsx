@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { editFacilitiesList } from '../../../Redux/actions/actionGetFacilities'
-import Button from '../../layout/Button'
+import { editFacilitiesList } from '../Redux/actions/actionGetFacilities'
+import Button from './Button'
 
 
 const Oar = ({ facilities }) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import './details.css'
+import '../styles/details.css'
 
 const Details = () => {
   let facility = useSelector((state) => state.getFacilities.facilitiesFiltered)

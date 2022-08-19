@@ -1,8 +1,8 @@
 import React from 'react'
-import './marker.css'
+import '../styles/marker.css'
 
 const Marker = (props) => {
-  const { text, tooltip, hover } = props
+  const { text, tooltip } = props
   const handleClick = () => {
     console.log(`You clicked on ${tooltip}`)
   }
