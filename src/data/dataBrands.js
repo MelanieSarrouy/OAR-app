@@ -18,7 +18,7 @@ export const data = [
       'Pinori Filati Spa',
       'Sawhney Global Creations',
       'Soeiro',
-      'Royo fabrics',
+      'Tejidos Royo',
       'Textile Goncalves & Santos',
       'Tintex Textiles Sa',
       'Trifitrofa',

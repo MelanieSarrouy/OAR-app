@@ -18,33 +18,72 @@ hr:after {
 .section {
   padding: 2rem;
 }
-.inputContainer {
+
+.category {
   display: flex;
   flex-direction: column;
 }
-.inputContainer__label {
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form__label {
   font-size: 1.3rem;
   font-weight: 600;
   padding: 1rem 0;
 }
-.inputContainer__input {
+.form__input__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   gap: 1rem;
 }
-.inputContainer__input__field {
-  padding: 1rem;
+.form__input__container > div {
   width: 100%;
-  border: 1px solid #0898e7;
-  border-radius: .3rem;
-  font-size: 1.2rem;  
 }
-.inputContainer__input__field::placeholder {
-    color: #0898e7;
-  }
+.form__input__container__field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid #0898e7;
+  border-radius: 0.3rem;
+  width: 100%;
+}
+.input {
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  border-radius: 0.3rem;
+  border: none;
+  width: 100%;
+}
+.input::placeholder {
+  color: #0898e7;
+}
+.input:focus-visible {
+  outline: none;
+}
+.inputContainer__dropdown {
+  border: 1px solid #0898e7;
+  border-top: none;
+  border-radius: 0 0 0.3rem 0.3rem;
+  width: 100%;
+  color: #424242;
+  max-height: 100px;
+  overflow: auto;
+}
+.inputContainer__dropdown > li {
+  padding: 0.25rem 1rem;
+}
+.inputContainer__dropdown > li:hover {
+  background-color: rgba(8, 152, 231, 0.2);
+}
+
 .searchButton {
   width: 100%;
   margin-top: 4rem;
+}
+.chevron {
+  padding: 0 1rem;
 }

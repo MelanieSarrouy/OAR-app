@@ -4,22 +4,27 @@ import Country from './Country'
 import Oar from './Oar'
 import '../styles/search.css'
 import { useSelector, useDispatch } from 'react-redux'
+import { editBrandsList } from '../Redux/actions/actionGetBrands'
 import { editFacilitiesList } from '../Redux/actions/actionGetFacilities'
 
 const Search = () => {
+  let brands = useSelector((state) => state.getBrands.brands)
+  let facilities = useSelector((state) => state.getFacilities.facilities)
   const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(editBrandsList([]))
+  }, [dispatch])
+
   useEffect(() => {
     dispatch(editFacilitiesList([]))
   }, [dispatch])
-  let brands = useSelector((state) => state.getBrands.brands)
-  let facilities = useSelector((state) => state.getFacilities.facilities)
 
   return (
     <section className="section">
-      <Oar facilities={facilities} />
+      <Oar />
       <hr></hr>
-      <Brand brands={brands} />
-      <Country />
+      <Brand brands={brands} facilities={facilities} />
+      <Country facilities={facilities} />
       <button className="button searchButton" type="button">
         Rechercher
       </button>

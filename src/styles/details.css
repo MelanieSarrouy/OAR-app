@@ -15,15 +15,12 @@
   color: #222;
   overflow: visible;
   text-align: center;
-  margin: 0rem 0 0rem 0;
+  margin: 0;
 }
 .details-container hr:after {
   background: rgba(255,255,255,0);
   content: '';
   color: #0898e7;
-  padding: 0 1rem;
-  position: relative;
-  top: -13px;
 }
 .details-container__gps {
   display: flex;

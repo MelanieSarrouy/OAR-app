@@ -1,0 +1,29 @@
+.facilitiesList {
+  max-height: 100vh;
+  overflow: auto;
+}
+.facilitiesList hr {
+  border: none;
+  border-top: 1px solid #0898e7;
+  color: #222;
+  overflow: visible;
+  text-align: center;
+  margin: 1rem 0 0 0;
+}
+.facilitiesList hr:after {
+  background: rgba(255, 255, 255, 0);
+  content: '';
+  color: #0898e7;
+  top: -20px;
+}
+.facilities__item {
+  border-bottom: 1px solid #0898e7;
+}
+.facilities__item__link__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+}
+.facilities__item__link__address {
+  padding: 0rem 2rem 1rem 2rem;
+}

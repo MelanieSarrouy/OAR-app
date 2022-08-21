@@ -23,9 +23,9 @@ export const facilitiesListError = createAction('facilities-list-error', (error)
   }
 })
 
-export const editFacilitiesList = createAction('edit-facilities-list', (facilities) => {
+export const editFacilitiesList = createAction('edit-facilities-list', (facilitiesFiltered) => {
   return {
-    payload: facilities,
+    payload: facilitiesFiltered,
   }
 })
 

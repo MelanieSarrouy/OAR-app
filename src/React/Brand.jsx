@@ -1,40 +1,111 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Button from './Button'
+import arrowDown from '../assets/chevron-down-solid.svg'
+import arrowUp from '../assets/chevron-up-solid.svg'
+import { normalizeAndLowerCase } from '../helpers/normalize'
+import { editBrandsList } from '../Redux/actions/actionGetBrands'
+import { editFacilitiesList } from '../Redux/actions/actionGetFacilities'
 
-const Brand = ({ brands }) => {
+const Brand = ({ brands, facilities }) => {
+  let brandsFiltered = useSelector((state) => state.getBrands.brandsFiltered)
+
   const [brand, setBrand] = useState('')
+  const [toggle, setToggle] = useState(false)
+  const [updateBrands, setUpdateBrands] = useState(brandsFiltered)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    setUpdateBrands([...brands])
+  }, [brands])
 
   let brandsToDisplay = []
-  for (const brand of brands) {
+  for (const brand of brandsFiltered) {
     brandsToDisplay.push(brand.name)
   }
-  console.log(brandsToDisplay)
-
-  const handleClick = () => {
+  const handleChange = (e) => {
     console.log('test')
+    setToggle(true)
+    const entry = e.target.value
+    setBrand(entry)
+    let newEntry = normalizeAndLowerCase(entry)
+    let array = []
+    for (const brand of brands) {
+      let newBrand = normalizeAndLowerCase(brand.name)
+      if (newBrand.indexOf(newEntry) !== -1) {
+        array.push(brand)
+      }
+    }
+    setUpdateBrands(array)
+    if (entry === '') {
+      dispatch(editBrandsList(brands))
+    }
+  }
+  const handleClick = () => {
+    dispatch(editBrandsList(updateBrands))
+  }
+  const handleChoice = (el) => {
+    console.log(el)
+    setBrand(el.name)
+    setUpdateBrands([el])
+    dispatch(editBrandsList([el]))
+    upDateFacilitiesFiltered(el)
+  }
+
+  const upDateFacilitiesFiltered = (el) => {
+    let facilitiesFiltered = []
+    const brandSelected = el
+    let brandFacilities = brandSelected.contributors
+    for (const iterator of brandFacilities) {
+      for (const facility of facilities) {
+        if (facility.name === iterator) {
+          facilitiesFiltered.push(facility)
+        }
+      }
+    }
+    dispatch(editFacilitiesList(facilitiesFiltered))
   }
 
   return (
-    <div className="inputContainer">
-      <label className="inputContainer__label" htmlFor="brand">
-        Marque
-      </label>
-      <div className="inputContainer__input">
-        <div>
-          <input
-            className="inputContainer__input__field"
-            id="brand"
-            type="text"
-            value={brand}
-            placeholder="Select..."
-            onChange={(e) => setBrand(e.target.value)}
-          />
-          <div>{brandsToDisplay.map((el, index) => (
-            <p key={index} >{el}</p>
-          ))}</div>
+    <div className="category">
+      <form method="" className="form">
+        <label className="form__label" htmlFor="brand">
+          Marque
+        </label>
+        <div className="form__input__container">
+          <div>
+            <div className="form__input__container__field">
+              <input
+                className="input"
+                id="brand"
+                type="text"
+                value={brand}
+                placeholder="Select..."
+                onChange={(e) => handleChange(e)}
+                onFocus={() => setToggle(!toggle)}
+              />
+              <img
+                src={!toggle ? arrowDown : arrowUp}
+                alt=""
+                width={20}
+                onClick={() => setToggle(!toggle)}
+                className="chevron"
+              />
+            </div>
+            {toggle && (
+              <ul className="inputContainer__dropdown">
+                {updateBrands.map((el, index) => (
+                  <li key={index} onClick={() => handleChoice(el)}>
+                    {el.name}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <Button path="/facilities" content="Go" onClick={handleClick} />
         </div>
-        <Button path="/facilites" content="Go" onClick={handleClick} />
-      </div>
+      </form>
     </div>
   )
 }

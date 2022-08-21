@@ -9,6 +9,7 @@ import { brandsListError, brandsListLoading, brandsListSuccess, editBrandsList }
 const initialStateGetBrands = {
   isLoading: false,
   brands: [],
+  brandsFiltered: [],
   error: null,
 }
 
@@ -32,7 +33,7 @@ export const getBrandsReducer = createReducer(initialStateGetBrands, (builder) =
     })
     .addCase(editBrandsList, (draft, action) => {
       draft.isLoading = false
-      draft.brands = action.payload
+      draft.brandsFiltered = action.payload
       draft.error = ''
       return
     })

@@ -40,7 +40,7 @@ export const data = [
     country: 'Italy',
   },
   {
-    name: 'Halfnet',
+    name: 'Half net',
     idOAR: 'PT20191507M5JBK',
     adresse: 'Rua de Gandra LT 1 Ronfe Guimaraes 4805-413 - Portugal',
     gps: {
