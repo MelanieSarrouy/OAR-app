@@ -10,8 +10,10 @@ const Facilities = () => {
     return (
       <div className="facilitiesList">
         <p className="facilities__item__link__title">
-          Aucune installation à afficher <br></br>Veuillez effectuer une nouvelle recherche
+          Auncun résultat<br></br>Veuillez effectuer une nouvelle
+          recherche
         </p>
+        <hr></hr>
       </div>
     )
   } 

@@ -1,10 +1,10 @@
 .button {
-  background-color: #ea3a60;
-  border: 1px solid #ea3a60;
+  background-color: #66c820;
+  border: 1px solid #66c820;
   border-radius: .3rem;
   color: white;
   font-size: 1.1rem;
-  padding: .8rem;
+  padding: .7rem;
   display: flex;
   justify-content: center;
   align-items: center;

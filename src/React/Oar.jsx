@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from './Button'
 import '../styles/oar.css'
+import { useDispatch } from 'react-redux'
+import { oarSelected } from '../Redux/actions/actionResults'
 
 const Oar = () => {
   const [oarId, setOarId] = useState('')
+  const dispatch = useDispatch()
 
+  useEffect(()=> {
+    dispatch(oarSelected(''))
+  }, [dispatch])
+  
   const handleClick = () => {
     if (oarId) {
       setOarId('')
@@ -27,10 +34,16 @@ const Oar = () => {
                 value={oarId}
                 placeholder="IN2021079TDH72D"
                 onChange={(e) => setOarId(e.target.value.toUpperCase())}
+                onBlur={() => dispatch(oarSelected(oarId))}
               />
             </div>
           </div>
-          <Button path={`/facilities/${oarId}`} content="Go" onClick={handleClick} />
+          <Button
+            path={`/facilities/${oarId}`}
+            className="button"
+            content="Go"
+            onClick={handleClick}
+          />
         </div>
       </form>
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Button from './Button'
 import arrowDown from '../assets/chevron-down-solid.svg'
 import arrowUp from '../assets/chevron-up-solid.svg'
@@ -8,24 +8,21 @@ import { editBrandsList } from '../Redux/actions/actionGetBrands'
 import { editFacilitiesList } from '../Redux/actions/actionGetFacilities'
 
 const Brand = ({ brands, facilities }) => {
-  let brandsFiltered = useSelector((state) => state.getBrands.brandsFiltered)
 
   const [brand, setBrand] = useState('')
   const [toggle, setToggle] = useState(false)
-  const [updateBrands, setUpdateBrands] = useState(brandsFiltered)
+  const [updateBrands, setUpdateBrands] = useState([])
 
   const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(editBrandsList([]))
+  }, [dispatch])
 
   useEffect(() => {
     setUpdateBrands([...brands])
   }, [brands])
 
-  let brandsToDisplay = []
-  for (const brand of brandsFiltered) {
-    brandsToDisplay.push(brand.name)
-  }
   const handleChange = (e) => {
-    console.log('test')
     setToggle(true)
     const entry = e.target.value
     setBrand(entry)
@@ -39,14 +36,14 @@ const Brand = ({ brands, facilities }) => {
     }
     setUpdateBrands(array)
     if (entry === '') {
-      dispatch(editBrandsList(brands))
+      dispatch(editBrandsList([]))
+      dispatch(editFacilitiesList([]))
     }
   }
   const handleClick = () => {
     dispatch(editBrandsList(updateBrands))
   }
   const handleChoice = (el) => {
-    console.log(el)
     setBrand(el.name)
     setUpdateBrands([el])
     dispatch(editBrandsList([el]))
@@ -69,7 +66,7 @@ const Brand = ({ brands, facilities }) => {
 
   return (
     <div className="category">
-      <form method="" className="form">
+      <div className="form">
         <label className="form__label" htmlFor="brand">
           Marque
         </label>
@@ -84,6 +81,7 @@ const Brand = ({ brands, facilities }) => {
                 placeholder="Select..."
                 onChange={(e) => handleChange(e)}
                 onFocus={() => setToggle(!toggle)}
+                onBlur={(e) => handleChange(e)}
               />
               <img
                 src={!toggle ? arrowDown : arrowUp}
@@ -103,9 +101,9 @@ const Brand = ({ brands, facilities }) => {
               </ul>
             )}
           </div>
-          <Button path="/facilities" content="Go" onClick={handleClick} />
+          <Button path="/facilities" className="button" content="Go" onClick={handleClick} />
         </div>
-      </form>
+      </div>
     </div>
   )
 }

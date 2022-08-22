@@ -5,57 +5,41 @@ import arrowDown from '../assets/chevron-down-solid.svg'
 import arrowUp from '../assets/chevron-up-solid.svg'
 import { normalizeAndLowerCase } from '../helpers/normalize'
 import { editFacilitiesList } from '../Redux/actions/actionGetFacilities'
+import { countrySelected } from '../Redux/actions/actionResults'
 
 const Country = ({ facilities }) => {
   let facilitiesFiltered = useSelector((state) => state.getFacilities.facilitiesFiltered)
+  let brandsFiltered = useSelector((state) => state.getBrands.brandsFiltered)
 
   const [country, setCountry] = useState('')
   const [toggle, setToggle] = useState(false)
   const [countriesFiltered, setCountriesFiltered] = useState([])
 
   const dispatch = useDispatch()
-
-  let allCountries = []
-
-  let facilitiesUsed
-  if (facilitiesFiltered.length > 0) {
-    facilitiesUsed = facilitiesFiltered
-  } else {
-    facilitiesUsed = facilities
-  }
-
-  const selectCountries = () => {
-    for (const facility of facilitiesUsed) {
-      allCountries.push(facility.country)
-    }
-    let countries = [...new Set(allCountries)]
-    setCountriesFiltered(countries)
-  }
-
   useEffect(() => {
-    selectCountries()
-  }, [])
-  console.log(allCountries)
+    dispatch(countrySelected(''))
+  }, [dispatch])
 
-  console.log(countriesFiltered)
+  let facilitiesUsed = facilitiesFiltered.length > 0 ? facilitiesFiltered : facilities
+  let allCountries = []
+  for (const facility of facilitiesUsed) {
+    allCountries.push(facility.country)
+  }
+  allCountries = [...new Set(allCountries)]
 
   const handleClick = () => {
-    console.log('test')
-    let array = []
-    console.log(country)
-    for (const facility of facilitiesUsed) {
-      if (country === facility.country) {
-        console.log(facility)
-        array.push(facility)
-      }
-    }
-    dispatch(editFacilitiesList(array))
+    setCountry('')
+  }
+  const handleFocus = () => {
+    setCountriesFiltered(allCountries)
+    setToggle(!toggle)
   }
 
   const handleChange = (e) => {
     setToggle(true)
     const entry = e.target.value
     setCountry(entry)
+    setCountriesFiltered(allCountries)
     let newEntry = normalizeAndLowerCase(entry)
     let array = []
     for (const iterator of countriesFiltered) {
@@ -66,21 +50,29 @@ const Country = ({ facilities }) => {
     }
     setCountriesFiltered(array)
     if (entry === '') {
-      selectCountries()
-      console.log('test')
+      setCountriesFiltered(allCountries)
+      if (brandsFiltered.length < 1) {
+        dispatch(editFacilitiesList([]))
+      }
     }
   }
 
   const handleChoice = (el) => {
-    let countries = [...new Set(allCountries)]
-    setCountriesFiltered(countries)
-    console.log(el)
+    let array = []
+    for (const facility of facilitiesUsed) {
+      if (el === facility.country) {
+        array.push(facility)
+      }
+    }
+    dispatch(editFacilitiesList(array))
+    dispatch(countrySelected(el))
+    setCountriesFiltered(allCountries)
     setCountry(el)
   }
 
   return (
     <div className="category">
-      <form method="" className="form">
+      <div className="form">
         <label className="form__label" htmlFor="brand">
           Pays
         </label>
@@ -94,7 +86,8 @@ const Country = ({ facilities }) => {
                 value={country}
                 placeholder="Select..."
                 onChange={(e) => handleChange(e)}
-                onFocus={() => setToggle(!toggle)}
+                onFocus={handleFocus}
+                onBlur={() => dispatch(countrySelected(country))}
               />
               <img
                 src={!toggle ? arrowDown : arrowUp}
@@ -114,9 +107,9 @@ const Country = ({ facilities }) => {
               </ul>
             )}
           </div>
-          <Button path="/facilities" content="Go" onClick={handleClick} />
+          <Button path="/facilities" className="button" content="Go" onClick={handleClick} />
         </div>
-      </form>
+      </div>
     </div>
   )
 }

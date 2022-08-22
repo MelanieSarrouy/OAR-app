@@ -5,9 +5,7 @@ import '../styles/details.css'
 
 const Details = () => {
   const params = useParams()
-  console.log(params)
   const id = params.id
-  console.log(id)
 
   let facilities = useSelector((state) => state.getFacilities.facilities)
   let facility = facilities.find(el => el.idOAR === id)
