@@ -4,14 +4,15 @@ import '../styles/oar.css'
 import { useDispatch } from 'react-redux'
 import { oarSelected } from '../Redux/actions/actionResults'
 
-const Oar = () => {
+const Oar = ({facilities}) => {
+
   const [oarId, setOarId] = useState('')
   const dispatch = useDispatch()
 
   useEffect(()=> {
     dispatch(oarSelected(''))
   }, [dispatch])
-  
+
   const handleClick = () => {
     if (oarId) {
       setOarId('')

@@ -34,7 +34,7 @@ const Search = () => {
 
   return (
     <section className="section">
-      <Oar />
+      <Oar facilities={facilities} />
       <hr></hr>
       <form method="" className="form">
         <Brand brands={brands} facilities={facilities} />

@@ -1,14 +1,19 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { editFacilitiesList } from '../Redux/actions/actionGetFacilities'
 import '../styles/details.css'
 
 const Details = () => {
   const params = useParams()
   const id = params.id
-
+  const dispatch = useDispatch()
   let facilities = useSelector((state) => state.getFacilities.facilities)
   let facility = facilities.find(el => el.idOAR === id)
+
+  useEffect(() => {
+    dispatch(editFacilitiesList([facility]))
+  }, [dispatch, facility])
 
   if (facility === undefined) {
     return (
